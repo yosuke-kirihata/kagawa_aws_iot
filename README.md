@@ -1,1 +1,1 @@
-# kagawa_iot_2023
+# kagawa_aws_iot
