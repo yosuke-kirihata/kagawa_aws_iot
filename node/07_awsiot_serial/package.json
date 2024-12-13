@@ -10,8 +10,8 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "aws-iot-device-sdk": "^2.2.13",
-    "dayjs": "^1.11.10",
+    "aws-iot-device-sdk": "^2.2.15",
+    "dayjs": "^1.11.13",
     "serialport": "^12.0.0"
   }
 }
