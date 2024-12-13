@@ -1,8 +1,7 @@
 {
-  "name": "01_led",
+  "name": "aws_iot",
   "version": "1.0.0",
-  "description": "",
-  "main": "led_on.js",
+  "main": "mqtt_led.js",
   "type": "module",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -10,6 +9,10 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
-    "rpi-gpio": "^2.1.7"
-  }
+    "onoff": "^6.0.3"    
+  },
+  "directories": {
+    "lib": "lib"
+  },
+  "description": ""
 }
