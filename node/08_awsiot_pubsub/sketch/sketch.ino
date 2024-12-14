@@ -105,8 +105,10 @@ void loop()
     // シリアルコマンドを受けてサーボモータ制御を開始
     if (Serial.available() > 0)
     {
+        // CRLFのLFまで受信し、CRを削除
         String command = Serial.readStringUntil('\n');
-        if (command == "servo")
+        command.trim();
+        if (command == "ALERT")
         {
             startServoMove();
         }
@@ -183,7 +185,7 @@ void moveServo()
         if (servoCurrentAngle >= 180)
         {
             servoCurrentAngle = 180;
-            servoDirection = 1; // 今度は0度に戻る
+            servoDirection = 1; // 0度に戻る
             servoMoveStartTime = currentTime;
         }
     }

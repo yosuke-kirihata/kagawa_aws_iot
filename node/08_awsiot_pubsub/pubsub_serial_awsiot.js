@@ -11,6 +11,9 @@ const ENDPOINT = ""; //ex: piyo.iot.ap-northeast-1.amazonaws.com
 
 const topic = "kagawa/kosen/denkilab/rpi/" + UUID;
 
+const topicToPublish = topic;
+const topicToSubscribe = topic + "/alert";
+
 const port = new SerialPort({
   path: "/dev/ttyACM0",
   baudRate: 115200,
@@ -32,7 +35,7 @@ const device = awsIot.device({
 
 device.on("connect", function () {
   console.log("connect");
-  device.subscribe(topic + "/info");
+  device.subscribe(topicToSubscribe);
 });
 
 parser.on("data", function (data) {
@@ -46,11 +49,11 @@ parser.on("data", function (data) {
     co2: splited[0],
   });
   console.log(message);
-  device.publish(topic, message);
+  device.publish(topicToPublish, message);
 });
 
 device.on("message", function (topic, payload) {
-  console.log(`Message received on topic ${topic}:`, payload.toString());
+  console.log(topic, payload.toString());
 
   try {
     const json = JSON.parse(payload.toString());
